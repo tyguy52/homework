@@ -1,0 +1,29 @@
+These are my best friends!
+
+Ben Bade   Ryan Swanson   David Wang   
+Eric Chung   Ben Zarras   Luis Navarette   
+
+
+
+These are my favorite types of cheese!
+
+American   Swiss   
+Gouda   Parmesean   
+Brie   Beenleigh Blue   
+
+
+
+Please enter two integer values: one for rows and one for columns.
+
+6 8
+
+
+
+Here is table of randomly generated values based on your input!
+
+31   19   9   38   20   43   30   24   
+2   1   16   33   36   30   40   42   
+11   9   21   48   37   33   4   16   
+42   11   16   32   24   0   37   38   
+2   7   43   42   2   5   37   35   
+37   14   35   35   35   28   11   8   
