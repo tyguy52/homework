@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+
+
+public class Lab13
+{
+	public static void main(String[]args) throws IOException
+	{
+		toFile("test");
+		toConsole(toFile("test"));
+	}
+	
+	public static File toFile(String name) throws IOException
+	{
+		File file = new File("C:\\Users\\Tyler\\"+name+".txt");
+		try {
+			file.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		FileWriter fw = new FileWriter(file.getAbsoluteFile());
+		BufferedWriter bw = new BufferedWriter(fw);
+		
+		Random generator = new Random();
+	
+		int [] numbers = new int[10];
+		String [] names = new String[]
+				{"Tyler", "Ben", "Eric", "John", "Ryan", "David", "Matt", "Joe", "Luis", "Michael"};
+		
+		for(int i=0; i<names.length; i++)
+			numbers[i] = generator.nextInt(10)+10;
+		
+		for(int i=0; i<10; i++)
+			bw.write(names[generator.nextInt(names.length)] + " " + numbers[generator.nextInt(numbers.length)] + "\r\n");
+		
+		bw.close();
+		return file;
+	}
+	
+	public static void toConsole(File fileName) throws IOException
+	{
+		BufferedReader in = new BufferedReader(new FileReader(fileName));
+		String line = in.readLine();
+		
+		while(line != null)
+		{
+			System.out.println(line);
+			line = in.readLine();
+		}
+		
+		in.close();
+	}
+	
+	public static void toSquare(File fileName) throws IOException
+	{
+		
+	}
+}
