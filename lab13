@@ -6,54 +6,98 @@ public class Lab13
 {
 	public static void main(String[]args) throws IOException
 	{
-		toFile("test");
-		toConsole(toFile("test"));
+		Scanner input = new Scanner(System.in);
+		String userName = System.getProperty("user.name");
+		
+		System.out.println("Please enter a file name:");
+		String fileName = input.nextLine();
+		
+		File file = new File("C:\\Users\\"+userName+"\\"+fileName+".txt");
+		toFile(file);
+		toConsole(file);
+		toSquare(file);
+		
+		toConsole(file);
+		
+		
+		
+		
+		
+		
+		input.close();
 	}
-	
-	public static File toFile(String name) throws IOException
+
+
+	public static void toFile(File fileName) throws IOException
 	{
-		File file = new File("C:\\Users\\Tyler\\"+name+".txt");
 		try {
-			file.createNewFile();
+			fileName.createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		FileWriter fw = new FileWriter(file.getAbsoluteFile());
+
+		FileWriter fw = new FileWriter(fileName.getAbsoluteFile());
 		BufferedWriter bw = new BufferedWriter(fw);
-		
+
 		Random generator = new Random();
-	
+
 		int [] numbers = new int[10];
 		String [] names = new String[]
 				{"Tyler", "Ben", "Eric", "John", "Ryan", "David", "Matt", "Joe", "Luis", "Michael"};
-		
+
 		for(int i=0; i<names.length; i++)
 			numbers[i] = generator.nextInt(10)+10;
-		
+
 		for(int i=0; i<10; i++)
 			bw.write(names[generator.nextInt(names.length)] + " " + numbers[generator.nextInt(numbers.length)] + "\r\n");
-		
+
 		bw.close();
-		return file;
 	}
-	
+
 	public static void toConsole(File fileName) throws IOException
 	{
 		BufferedReader in = new BufferedReader(new FileReader(fileName));
 		String line = in.readLine();
-		
+
 		while(line != null)
 		{
 			System.out.println(line);
 			line = in.readLine();
 		}
-		
+
+		System.out.println();
 		in.close();
 	}
-	
+
 	public static void toSquare(File fileName) throws IOException
 	{
+		BufferedReader in = new BufferedReader(new FileReader(fileName));
+		String[] names = new String[10];
+		int[] squares = new int[10];
+		String line = in.readLine();
+		int counter = 0;
 		
+		while(counter <10)
+		{
+			String[] token = line.split(" ");
+			names[counter] = token[0];
+			squares[counter] = Integer.parseInt(token[1]);
+			line = in.readLine();
+			counter++;
+		}
+		
+		in.close();
+		
+		for(int i=0; i<10; i++)
+			squares[i]*=squares[i];
+		
+		
+		FileWriter fw = new FileWriter(fileName);
+		BufferedWriter bw = new BufferedWriter(fw);
+		
+		for(int i=0; i<10; i++)
+		bw.write(names[i] + " " + squares[i] + "\r\n");
+		
+		bw.close();
 	}
 }
