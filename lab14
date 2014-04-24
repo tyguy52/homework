@@ -1,0 +1,88 @@
+package lab14;
+
+import java.util.*;
+import java.util.regex.*;
+
+public class Lab14 
+{
+	public static void main(String[]args)
+	{
+		String firstName;
+		String lastName;
+		String mailingAdress;
+		String[] adressComponent;
+		String adress;
+		String city;
+		String state;
+		String zipCode;
+		String email;
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Please enter your whole name:");
+		firstName = input.next();
+		lastName = input.next();
+		firstMatch(firstName);
+		lastMatch(lastName);
+		
+		/*
+		System.out.println("Thank you, " + firstName + ". Please enter your mailing address:");
+		
+		mailingAdress = input.nextLine();
+		adressComponent = mailingAdress.split(", ");
+		address = adressComponent[0];
+		city = adressComponent[1];
+		state = adressComponent[2];
+		zipCode = adressComponent[3];
+		
+		System.out.println("Thank you. Please enter a valid email address");
+		email = input.nextLine();
+		
+	*/
+	}
+	
+	public static void firstMatch(String firstName)
+	{
+		Scanner input = new Scanner(System.in);
+		String regex = "[A-Z]+[A-Za-z]+";
+		Boolean isTrue = false;
+		
+		while(isTrue == false)
+		{
+			if(firstName.matches(regex)==false)
+			{
+				System.err.println("\nInvalid first name"); 
+				System.err.println("Please enter a valid first name:");
+				firstName = input.nextLine();
+			}
+			else
+			{
+				isTrue = true;
+			}
+		}
+		input.close();
+	}
+	
+	public static void lastMatch(String lastName)
+	{
+		Scanner input = new Scanner(System.in);
+		String regex = "[A-Z]+[A-Za-z]+";
+		Boolean isTrue = false;
+		
+		while(isTrue == false)
+		{
+			if(lastName.matches(regex)==false)
+			{
+				System.err.println("\nInvalid last name"); 
+				System.err.println("Please enter again:");
+				lastName = input.nextLine();
+			}
+			else
+			{
+				isTrue = true;
+			}
+		}
+		input.close();
+	}
+}
+
