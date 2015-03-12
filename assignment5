@@ -1,0 +1,40 @@
+import java.awt.*;
+
+public class Assignment5
+{
+	public static void main(String[]args)
+	{
+		Color red = new Color(179,27,27);
+		Color tan = new Color(219,204,186);
+		Color gold = new Color(157,131,82);
+
+		int xOffset = 40;
+		int width = 220;
+		
+		DrawingPanel panel = new DrawingPanel(300,500);
+		panel.setBackground(tan);
+		Graphics g = panel.getGraphics();
+	
+		g.setColor(Color.gray);
+		g.fillOval(xOffset, 390, width, 50);
+		
+		g.setColor(Color.white);
+		g.fillOval(xOffset, 385, width, 50);
+		g.fillRect(xOffset, 240, width, 170);
+		
+		g.setColor(red);
+		g.fillOval(xOffset, 215, width, 50);
+		g.fillRect(xOffset, 70, width, 170);
+		
+		g.setColor(Color.gray);
+		g.fillOval(xOffset, 40, width, 60);
+		
+		g.setColor(gold);
+		g.fillOval(115, 220, 75, 75);
+		
+		g.setColor(Color.white);
+		g.drawString("Campbell's", 50, 100);
+		g.drawS
+		
+	}
+}
