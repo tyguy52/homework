@@ -1,0 +1,63 @@
+import java.util.*;
+public class Assignment6 
+{
+	public static void main(String[]args)
+	{
+		Scanner input = new Scanner(System.in);
+		String phrase = "";
+		String sentinel = "";
+		String disemvowel = "";
+		String minusDoubles = "";
+		double count = 0;
+		
+		System.out.println("Welcome to the disemvoweling utility.");
+		System.out.println("Please enter a phrase to be disemvoweled");
+		
+		phrase = input.nextLine();
+		
+		System.out.println("The phrase you wish to disemvowel is: " + phrase);
+		System.out.println("Please enter \"Q\" to continue, else enter a new phrase!");
+		
+		sentinel = input.nextLine();
+		while(sentinel.equals("Q")|sentinel.equals("q") != true)
+		{
+			System.out.println("Your new phrase is: " + sentinel);
+			System.out.println("Please enter \"Q\" to continue, else enter a new phrase!");
+			phrase=sentinel;
+			sentinel = input.nextLine();
+		}
+		
+		for(int i=0; i<phrase.length(); i++)
+		{
+			if(phrase.charAt(i) == 'e')
+				count+=1;
+			else if(phrase.charAt(i) == 'a')
+					count+=1;
+			else	if(phrase.charAt(i) == 'i')
+						count+=1;
+			else		if(phrase.charAt(i) == 'o')
+							count+=1;
+			else			if(phrase.charAt(i) == 'u')
+								count+=1;
+							else
+							{
+								disemvowel+=phrase.charAt(i);
+							}
+		}
+		
+		for(int i=0; i<disemvowel.length();i+=2)
+			if(disemvowel.charAt(i)!=disemvowel.charAt(i+1))
+				minusDoubles+=disemvowel.charAt(i)+disemvowel.charAt(i+1);
+			else
+			{
+				count+=2;
+			}
+		
+		double reductionPercent = (count/(double)phrase.length())*100.0;
+		System.out.println("Here is your disemvoweled phrase!\n"+disemvowel);
+		System.out.println("\nStatistics on disemvoweled phrase:");
+		System.out.printf("Original number of characters in phrase: %d\nnumber of characters excised: %d\nreduction percentage: %.2f%%", phrase.length(), (int)count, reductionPercent);
+		System.out.println(minusDoubles);
+		input.close();
+	}
+}
