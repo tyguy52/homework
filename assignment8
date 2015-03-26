@@ -1,0 +1,64 @@
+package assignment8;
+
+import java.util.*;
+import java.io.*;
+public class Assignment8 
+{
+	public static void main(String[]args)
+		throws FileNotFoundException
+	{
+		Scanner reader = new Scanner(new File("PortlandWeather2013.txt"));
+		
+		reader.nextLine();
+		reader.nextLine();
+		
+		System.out.println("STATION         ")
+		while(reader.hasNext())
+		{
+			Scanner lineReader = new Scanner(reader.nextLine());
+			formatLine(lineReader);
+		}
+		//reader.close();
+	}
+	
+	public static void formatLine(Scanner reader)
+	{
+		String station = "";
+		int dateInt = 0;
+		double prcp = 0;
+		double snwd = 0;
+		double snow = 0;
+		double tmax = 0;
+		double tmin = 0;
+		
+	
+		station = reader.next();
+		dateInt = reader.nextInt();
+		prcp = reader.nextInt();
+		snwd = reader.nextInt();
+		snow = reader.nextInt();
+		tmax = reader.nextInt();
+		tmin = reader.nextInt();
+		
+		double prcpFormat = prcp*0.00393701;
+		double snwdFormat = snwd*0.0393701;
+		double snowFormat = snow*0.0393701;
+		double tmaxFormat = (tmax/10)*(9/5)+32;
+		double tminFormat = (tmin/10)*(9/5)+32;
+		
+		
+		System.out.printf("%s %s\t%.1f\t%.1f\t%.1f\t%.1f\t%.1f\n", station, formatDate(dateInt), prcpFormat,snwdFormat, snowFormat, tmaxFormat, tminFormat);
+	}
+	
+	public static String formatDate(int date)
+	{
+		String dateString = Integer.toString(date);
+		String year = dateString.substring(0, 4);
+		String month = dateString.substring(4, 6);
+		String day = dateString.substring(6);
+		String dateFormat = month + "/" + day + "/" + year;
+		
+		return dateFormat;
+	}
+	
+}
