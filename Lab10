@@ -1,0 +1,37 @@
+import java.util.*;
+import java.awt.*;
+import java.io.*;
+public class Lab10 
+{
+	public static void main(String[]args) throws FileNotFoundException
+	{
+		File f = new File("data.txt");
+		Scanner in = new Scanner(f);
+		DrawingPanel panel = new DrawingPanel(400,400);
+		Graphics g = panel.getGraphics();
+		Random rand = new Random();
+		
+		int[] diameters = new int[6];
+		Color Color[] = new Color[6];
+				
+		
+		for(int i=0; i<diameters.length;i++)
+		{
+			diameters[i] = in.nextInt();
+			Color[i] = new Color(rand.nextInt(256),rand.nextInt(256),rand.nextInt(256));
+		}
+		
+		for(int j=0;j<10;j++)
+		{
+			int xCenter=rand.nextInt(400);
+			int yCenter=rand.nextInt(400);
+			
+			for(int i=0;i<diameters.length;i++)
+			{
+				g.setColor(Color[i]);
+				g.fillOval(xCenter-diameters[i]/2, yCenter-diameters[i]/2, diameters[i], diameters[i]);
+			}
+		}
+		in.close();
+	}
+}
